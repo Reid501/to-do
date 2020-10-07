@@ -2,7 +2,8 @@ const input = document.querySelector('input');
 const addBtn = document.querySelector('.addBtn');
 const list = document.querySelector('.list');
 const delBtn = document.querySelector('removeBtn');
-const ul = document.querySelector('.list-section')
+const ul = document.querySelector('.list-section');
+const errorMessage = document.querySelector('.Error');
 
 function addRemoveButton(li) {
     let removeBtn = document.createElement('button');
@@ -12,6 +13,11 @@ function addRemoveButton(li) {
 }
 
 addBtn.addEventListener('click', () => {
+    if (input.value === '' || input.value === null){
+        errorMessage.innerHTML = `Oopse! Looks like you didn't type anything!`
+    } else {
+    // Removes error message
+    errorMessage.innerHTML = ''
     // Create new li
     let li = document.createElement('li');
     // Adding input value to the new li
@@ -22,6 +28,7 @@ addBtn.addEventListener('click', () => {
     addRemoveButton(li);
     // Remove text from input field.
     input.value = '';
+    }
 })
 
 ul.addEventListener('click', () => {
